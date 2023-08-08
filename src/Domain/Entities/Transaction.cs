@@ -24,6 +24,10 @@ public class Transaction : IEnumerable<Item>
     public Transaction(params string[] items) : this(items.Select(item => new Item(item)).ToList())
     {
     }
+    
+    public Transaction(params Item[] items) : this(items.ToList())
+    {
+    }
 
     public IEnumerator<Item> GetEnumerator()
     {
