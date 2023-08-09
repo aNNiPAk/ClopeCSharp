@@ -20,19 +20,19 @@ public class DataSourceNormalizer : IDataSource
     /// <summary>
     /// Словарь для хранения класса транзакции
     /// </summary>
-    private readonly Dictionary<int, string> _transactionClass;
+    private readonly Dictionary<int, string> _transactionIdToClassMap;
 
     /// <summary>
     /// Возвращает нормализованные данные dataSource на основе NormalizeOptions
     /// </summary>
     /// <param name="dataSource">Перечисление строк, представляющих данные</param>
     /// <param name="options">Параметры нормализации, используемые для обработки данных</param>
-    /// <param name="transactionClass">Словарь для хранения класса транзакции</param>
-    public DataSourceNormalizer(IEnumerable<string> dataSource, NormalizeOptions options, Dictionary<int, string> transactionClass)
+    /// <param name="transactionIdToClassMap">Словарь для хранения класса транзакции</param>
+    public DataSourceNormalizer(IEnumerable<string> dataSource, NormalizeOptions options, Dictionary<int, string> transactionIdToClassMap)
     {
         _dataSource = dataSource;
         _options = options;
-        _transactionClass = transactionClass;
+        _transactionIdToClassMap = transactionIdToClassMap;
     }
     
     public IEnumerator<Transaction> GetEnumerator()
@@ -64,7 +64,7 @@ public class DataSourceNormalizer : IDataSource
             
             if (_options.TestDataColumn != -1 && _options.TestDataColumn < list.Length)
             {
-                _transactionClass[transaction.Id] = list[_options.TestDataColumn];
+                _transactionIdToClassMap[transaction.Id] = list[_options.TestDataColumn];
             }
             
             yield return transaction;
