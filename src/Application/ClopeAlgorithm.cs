@@ -55,7 +55,7 @@ public class ClopeAlgorithm
         _clusterStorage.RemoveEmpty();
     }
 
-    public Cluster BestClusterFor(Transaction transaction)
+    private Cluster BestClusterFor(Transaction transaction)
     {
         Cluster? bestCluster = null;
 
