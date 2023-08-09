@@ -148,20 +148,4 @@ public class ClusterStorage : IClusterStorage
     {
         return Clusters.Values.GetEnumerator();
     }
-
-    // ///<summary>
-    // /// Вывод информации о кластерах.
-    // ///</summary>
-    // public override string  ToString()
-    // {
-    //     var table = new ConsoleTable("Cluster", "Unique items (widt hustogramm)");
-    //
-    //     foreach (var cluster in Clusters)
-    //     {
-    //         var width = string.Join(", ", cluster.Value.UniqueItemsWithCount.Keys);
-    //         table.AddRow(cluster.Value, width);
-    //     }
-    //
-    //     return table.ToString() ?? string.Empty;
-    // }
 }
